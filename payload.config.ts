@@ -24,6 +24,7 @@ import { mongooseAdapter } from '@payloadcms/db-mongodb'
 import { buildConfig } from 'payload'
 import sharp from 'sharp'
 import { fileURLToPath } from 'url'
+import { CustomDefaultView } from '@/components/CustomDefaultView'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
@@ -94,6 +95,14 @@ export default buildConfig({
       email: 'dev@payloadcms.com',
       password: 'test',
       prefillOnly: true,
+    },
+    components: {
+      views: {
+        CustomDefaultView: {
+          Component: CustomDefaultView,
+          path: '/test',
+        },
+      },
     },
   },
   async onInit(payload) {
